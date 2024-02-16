@@ -1,0 +1,17 @@
+:host {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+ul {
+    display: flex;
+    gap: 0.875em;
+    list-style: none;
+}
+
+#sign { 
+    display: flex;
+    gap: 0.875em;
+}

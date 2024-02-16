@@ -1,0 +1,64 @@
+:host {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        gap: 0px;
+        padding: 0px;
+        min-height: 100vh;
+}
+
+
+header {
+    background-color: yellow;
+    height: 3.75em;
+}
+
+main {
+    background-color: aliceblue;
+}
+
+footer {
+    background-color: cadetblue;
+    margin-top: auto;
+}
+
+
+/*Mobile*/
+@media (max-width: 767px) {
+
+    :host {
+        grid-template-columns: repeat(48, 1fr);
+    }
+
+    header, main, footer {
+        grid-column: 2 / span 46;
+    }
+    
+
+}
+
+/*Tablets and similar*/
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    :host {
+        grid-template-columns: repeat(24, 1fr);
+    }
+
+    header, main, footer {
+        grid-column: 2 / span 22;
+    }
+    
+
+}
+
+/*Bigger screens*/
+@media (min-width: 1024px) {
+    
+    :host {
+        grid-template-columns: repeat(18, 1fr);
+    }
+
+    header, main, footer {
+        grid-column: 2 / span 16;
+    }
+    
+}

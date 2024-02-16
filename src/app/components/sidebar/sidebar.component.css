@@ -1,0 +1,25 @@
+:host {
+    display: grid;
+    grid-template-columns: repeat(18, 1fr);
+    grid-template-rows: auto 1fr auto;
+    min-height: 100%;
+    row-gap: 2em;
+    padding: 5em 0 2em 0;
+}
+
+#new {
+    grid-column: 5 / span 10;
+}
+
+ul {
+    list-style: none;
+}
+
+ul, button {
+    grid-column: 3 / span 14;
+}
+
+button {
+    margin-top: auto;
+}
+

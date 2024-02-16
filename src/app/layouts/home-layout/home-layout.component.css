@@ -1,0 +1,68 @@
+:host {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 0px;
+    padding: 0px;
+    min-height: 100vh;
+}
+
+header {background-color: yellow; height: 3.75em;}
+
+aside {background-color:coral}
+
+main {background-color: aliceblue;}
+
+footer {background-color: cadetblue; margin-top: auto;}
+
+/*=====================================*/
+/*==============MEDIA RULES============*/
+/*=====================================*/
+/*Mobile*/
+@media (max-width: 767px) {
+
+    :host {
+        grid-template-columns: repeat(48, 1fr);
+    }
+
+    header {grid-column: 2 / span 46;}
+
+    aside {
+        position: absolute;
+        width: 0px;
+        overflow: hidden;
+    }
+    
+    main {grid-column: 2 / span 46;}
+
+}
+
+/*Tablets and similar*/
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    :host {
+        grid-template-columns: repeat(24, 1fr);
+    }
+
+    header {grid-column: 2 / span 22;}
+
+    aside {grid-column: span 5;}
+    
+    main {grid-column: span 18;}
+    
+
+}
+
+/*Bigger screens*/
+@media (min-width: 1024px) {
+    
+    :host {
+        grid-template-columns: repeat(18, 1fr);
+    }
+
+    header {grid-column: 2 / span 16;}
+
+    aside {grid-column: span 3;}
+    
+    main {grid-column: span 14;}
+    
+}
