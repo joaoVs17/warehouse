@@ -1,12 +1,13 @@
-<div>
-    Brand
+<div id="brand">
+    <img src="../../../assets/logos/Warehouse_logo.svg">
+    <p>Ware House</p>
 </div>
 
 
 
 <!--Changing mode-->
 <ng-template [ngIf]="currentRoute === '/signin' || currentRoute === '/signup'">
-    <a routerLink="/home"><i class="pi pi-question-circle" style="font-size: 1.5em;"></i></a>
+    <i class="pi pi-question-circle" style="font-size: 1.5em;"></i>
 </ng-template>
 
 <ng-template [ngIf]="currentRoute.startsWith('/home')">

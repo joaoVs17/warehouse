@@ -1,0 +1,75 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    padding: 2em 3em 0px 3em;
+    
+}
+
+.signup-form {
+    /* min-width: 150px; */
+    /* max-width: 500px; */
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(18, 1fr);
+    gap: 0.875em;
+}
+
+.signup-form p{
+    font-size: x-large;
+    color: #009688;
+    font-weight: bold;
+    grid-column: 1 / span 21;
+    text-align: center;
+}
+
+.signup-form .first-name-field {
+    grid-column: 3 / span 7;
+}
+
+.signup-form .last-name-field {
+    grid-column: 11 / span 7;
+}
+
+.signup-form .email-field {
+    grid-column: 3 / span 15;
+}
+
+.signup-form .phone-field {
+    grid-column: 3 / span 15;
+    margin-bottom: 1.125em;
+}
+
+.signup-form .password-field {
+    grid-column: 3 / span 15;
+}
+
+.signup-form button {
+    grid-column: 7 / span 7;
+}
+
+
+
+/* Change mat-form-field input height */
+/* ::ng-deep .mat-mdc-form-field {
+    height: 3.75em;
+} */
+/* ::ng-deep .mat-form-field {
+    font-size: 8px !important;
+}
+
+::ng-deep .mdc-floating-label {
+    font-size: 12px !important;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper {
+   height: 2.75em !important; 
+}
+
+::ng-deep .mat-mdc-input-element {
+    top: -7px;
+    position: relative !important;
+}
+
+ */
+

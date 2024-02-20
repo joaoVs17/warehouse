@@ -1,5 +1,102 @@
-<input type="text" placeholder="Email">
-<input type="text" placeholder="Username">
-<input type="password" placeholder="Password">
-<input type="password" placeholder="Confirm Password">
-<input type="button" routerLink="/home" value="Entra">
+
+<form class="signup-form">
+    <p class="form-title">Sign Up</p>
+
+    <mat-form-field [style.fontSize.px]=15 appearance="fill" class="first-name-field">
+
+        <mat-label>First Name</mat-label>
+        <input matInput type="text" [formControl]="nameFormControl" [errorStateMatcher]="matcher"
+        placeholder="Insert your first name">
+
+        <mat-hint>Insert your first name here!</mat-hint>
+
+        @if (nameFormControl.hasError('required')) {
+            <mat-error>First name is <strong>required</strong></mat-error>
+        }
+
+    </mat-form-field>
+    <mat-form-field [style.fontSize.px]=15 appearance="fill" class="last-name-field">
+
+        <mat-label>Last Name is <strong>required</strong></mat-label>
+        <input matInput type="text" [formControl]="nameFormControl" [errorStateMatcher]="matcher"
+        placeholder="Insert your first name">
+
+        <mat-hint>Insert your last name here!</mat-hint>
+
+        @if (nameFormControl.hasError('required')) {
+            <mat-error>Name is <strong>required</strong></mat-error>
+        }
+
+    </mat-form-field>
+
+    <mat-form-field [style.fontSize.px]=15 appearance="fill" class="email-field">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+        placeholder="Ex. meuemail@example.com">
+
+        <mat-hint>Insert your email here!</mat-hint>
+
+        @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+            <mat-error>Please enter a valid email address</mat-error>
+        }
+        @if (emailFormControl.hasError('required')) {
+            <mat-error>Email is <strong>required</strong></mat-error>
+        }
+    </mat-form-field> 
+
+    <mat-form-field [style.fontSize.px]=15 appearance="fill" class="email-field">
+        <mat-label>Recovery Email</mat-label>
+        <input matInput type="email" [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+        placeholder="Ex. meuemail@example.com">
+
+        <mat-hint>Insert a recovery email here!</mat-hint>
+
+        @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+            <mat-error>Please enter a valid email address</mat-error>
+        }
+        @if (emailFormControl.hasError('required')) {
+            <mat-error>Email is <strong>required</strong></mat-error>
+        }
+    </mat-form-field> 
+
+    <mat-form-field [style.fontSize.px]=15 appearance="fill" class="phone-field">
+        <mat-label>Phone</mat-label>
+        <input matInput type="text" [formControl]="nameFormControl" [errorStateMatcher]="matcher"
+        placeholder="(xx) xxxxx-xxxx">
+
+        <mat-hint>Insert a phone number here!</mat-hint>
+
+        @if (emailFormControl.hasError('required')) {
+            <mat-error>Email is <strong>required</strong></mat-error>
+        }
+    </mat-form-field> 
+
+
+    <mat-form-field [style.fontSize.px]=15 appearance="fill" class="password-field">
+        <mat-label>Password</mat-label>
+        <input matInput type="text" [formControl]="nameFormControl" [errorStateMatcher]="matcher"
+        placeholder="(xx) xxxxx-xxxx">
+
+        <mat-hint>Insert a password number here!</mat-hint>
+
+        @if (emailFormControl.hasError('required')) {
+            <mat-error>Password is <strong>required</strong></mat-error>
+        }
+    </mat-form-field> 
+    
+    <mat-form-field [style.fontSize.px]=15 appearance="fill" class="password-field">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput type="text" [formControl]="nameFormControl" [errorStateMatcher]="matcher"
+        placeholder="(xx) xxxxx-xxxx">
+
+        <mat-hint>Confirm your password here!</mat-hint>
+
+        @if (emailFormControl.hasError('required')) {
+            <mat-error>Confirm Password is <strong>required</strong></mat-error>
+        }
+    </mat-form-field> 
+
+    <button type="submit" mat-raised-button color="primary">Sign Up</button> 
+
+</form>
+

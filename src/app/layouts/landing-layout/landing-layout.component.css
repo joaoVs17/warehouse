@@ -8,12 +8,12 @@
 
 
 header {
-    background-color: yellow;
+    background-color: transparent;
     height: 3.75em;
 }
 
 main {
-    background-color: aliceblue;
+    background-color: transparent;
 }
 
 footer {

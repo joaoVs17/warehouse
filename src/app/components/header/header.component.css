@@ -5,6 +5,23 @@
     height: 100%;
 }
 
+#brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+#brand img {
+    width: auto;
+    height: 3.5em;
+}   
+
+#brand p {
+    color: #009688;
+    font-size: large;
+    font-weight: 600;
+}
+
 ul {
     display: flex;
     gap: 0.875em;
