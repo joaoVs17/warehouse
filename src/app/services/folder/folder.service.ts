@@ -21,6 +21,20 @@ export class FolderService {
     .pipe(
       mapRx((response: {response: FolderInterface[], msg: string}) => response.response)
     ) as Observable<FolderInterface[]>;
+  };
+
+  getUserFolders(): Observable<{response: FolderInterface[], msg: string}> | void {
+
+  };
+
+  getFoldersFromFolder(user_id: string, parent_id: string): Observable<FolderInterface[]> {
+  
+    return this.http.get<{response: FolderInterface[], msg: string}>(`${this.url}/api/folders/user/${user_id}/parent/${parent_id}`)
+    .pipe(
+      mapRx((response: {response: FolderInterface[], msg: string}) => {
+        return response.response;
+      })
+    ) as Observable<FolderInterface[]>;
   }
   
   createFolder(folder: FolderInterface): Observable<FolderInterface> {
@@ -28,14 +42,14 @@ export class FolderService {
     .pipe(
       mapRx((response: {response: FolderInterface, msg: string}) => response.response)
     ) as Observable<FolderInterface>;
-  }
+  };
 
   deleteFolder(folderId: string): Observable<FolderInterface> {
     return this.http.delete<{response: FolderInterface, msg: string}>(`${this.url}/api/folders/${folderId}`)
     .pipe(
       mapRx((response: {response: FolderInterface, msg: string}) => response.response)
     ) as Observable<FolderInterface>;
-  }
+  };
 
 
   

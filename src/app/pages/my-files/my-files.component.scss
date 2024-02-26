@@ -1,0 +1,56 @@
+.main-content {
+    margin: 4em 3em 1em 3em;
+    display: grid;
+    grid-template-columns: repeat(18, 1fr);
+    column-gap: 0.5em;
+
+    .page-title {
+        font-size: x-large;
+        color: #009688;
+        font-weight: bold;
+        grid-column: 1 / span 18;
+    }
+
+    hr {
+        grid-column: 1 / span 18;
+        border-color: #cfd8dc;
+        margin-bottom: 1em;
+    }
+
+    .folders {
+        grid-column: 1 / span 18;
+        display: grid;
+        grid-template-columns: repeat(24, 1fr);
+        column-gap: 1em;
+    
+        p {
+            grid-column: span 24;
+            font-weight: 700;
+            color:#607d8b;
+        }
+
+        app-folder {
+            grid-column: span 6;
+        }
+    }
+
+    .files {
+        margin-top: 1em;
+        grid-column: 1 / span 18;
+        display: grid;
+        grid-template-columns: repeat(24, 1fr);
+        column-gap: 1em;
+
+        p {
+            grid-column: span 24;
+            font-weight: 700;
+            color:#607d8b;
+        }
+
+        app-file {
+            grid-column: span 8;
+        }
+
+    }
+
+}

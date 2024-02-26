@@ -6,7 +6,7 @@ import { FilesListComponent } from '../../components/files-list/files-list.compo
   standalone: true,
   imports: [FilesListComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.scss'
 })
 export class HomeComponent {
 

@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule, NgTemplateOutlet, RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css',
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit{
 

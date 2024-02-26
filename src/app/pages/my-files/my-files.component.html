@@ -1,0 +1,20 @@
+<div class="main-content">
+
+    <p class="page-title">
+        My Files
+    </p>
+    <hr>
+
+    <div class="folders">
+        <p>Folders</p>
+        <app-folder *ngFor="let folder of foldersList" [folder]="folder"></app-folder>
+    </div>
+
+    <div class="files">
+        <p>Files</p>
+        <app-file *ngFor="let file of filesList" [file]="file"></app-file>
+    </div>
+
+    
+
+</div>

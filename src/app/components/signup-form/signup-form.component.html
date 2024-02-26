@@ -1,37 +1,37 @@
 
-<form class="signup-form">
+<form class="signup-form" [formGroup]="userForm" (ngSubmit)="onSaveUser(userForm.value)">
     <p class="form-title">Sign Up</p>
 
-    <mat-form-field [style.fontSize.px]=15 appearance="fill" class="first-name-field">
+    <mat-form-field [style.fontSize.px]=15 appearance="outline" class="first-name-field">
 
         <mat-label>First Name</mat-label>
-        <input matInput type="text" [formControl]="nameFormControl" [errorStateMatcher]="matcher"
+        <input formControlName="first_name" [formControl]="firstNameFormControl" matInput type="text"  [errorStateMatcher]="matcher"
         placeholder="Insert your first name">
 
         <mat-hint>Insert your first name here!</mat-hint>
 
-        @if (nameFormControl.hasError('required')) {
+        @if (firstNameFormControl.hasError('required')) {
             <mat-error>First name is <strong>required</strong></mat-error>
         }
 
     </mat-form-field>
-    <mat-form-field [style.fontSize.px]=15 appearance="fill" class="last-name-field">
+    <mat-form-field [style.fontSize.px]=15 appearance="outline" class="last-name-field">
 
-        <mat-label>Last Name is <strong>required</strong></mat-label>
-        <input matInput type="text" [formControl]="nameFormControl" [errorStateMatcher]="matcher"
+        <mat-label>Last Name</mat-label>
+        <input formControlName="last_name" [formControl]="lastNameFormControl" matInput type="text"  [errorStateMatcher]="matcher"
         placeholder="Insert your first name">
 
         <mat-hint>Insert your last name here!</mat-hint>
 
-        @if (nameFormControl.hasError('required')) {
-            <mat-error>Name is <strong>required</strong></mat-error>
+        @if (lastNameFormControl.hasError('required')) {
+            <mat-error>Last is <strong>required</strong></mat-error>
         }
 
     </mat-form-field>
 
-    <mat-form-field [style.fontSize.px]=15 appearance="fill" class="email-field">
+    <mat-form-field [style.fontSize.px]=15 appearance="outline" class="email-field">
         <mat-label>Email</mat-label>
-        <input matInput type="email" [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+        <input formControlName="email" [formControl]="emailFormControl" matInput type="email"  [errorStateMatcher]="matcher"
         placeholder="Ex. meuemail@example.com">
 
         <mat-hint>Insert your email here!</mat-hint>
@@ -44,59 +44,63 @@
         }
     </mat-form-field> 
 
-    <mat-form-field [style.fontSize.px]=15 appearance="fill" class="email-field">
+    <mat-form-field [style.fontSize.px]=15 appearance="outline" class="email-field">
         <mat-label>Recovery Email</mat-label>
-        <input matInput type="email" [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+        <input formControlName="recovery_email" [formControl]="recoveryEmailFormControl" matInput type="email"  [errorStateMatcher]="matcher"
         placeholder="Ex. meuemail@example.com">
 
         <mat-hint>Insert a recovery email here!</mat-hint>
 
-        @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
-            <mat-error>Please enter a valid email address</mat-error>
+        @if (recoveryEmailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+            <mat-error>Please enter a <strong>valid email address</strong></mat-error>
         }
-        @if (emailFormControl.hasError('required')) {
+        @if (recoveryEmailFormControl.hasError('required')) {
             <mat-error>Email is <strong>required</strong></mat-error>
         }
     </mat-form-field> 
-
-    <mat-form-field [style.fontSize.px]=15 appearance="fill" class="phone-field">
+<!-- 
+    <mat-form-field [style.fontSize.px]=15 appearance="outline" class="phone-field">
         <mat-label>Phone</mat-label>
-        <input matInput type="text" [formControl]="nameFormControl" [errorStateMatcher]="matcher"
+        <input formControlName="phone" [formControl]="phoneFormControl" matInput type="text" [errorStateMatcher]="matcher"
         placeholder="(xx) xxxxx-xxxx">
 
         <mat-hint>Insert a phone number here!</mat-hint>
 
-        @if (emailFormControl.hasError('required')) {
+        @if (phoneFormControl.hasError('required')) {
             <mat-error>Email is <strong>required</strong></mat-error>
         }
-    </mat-form-field> 
+    </mat-form-field>  -->
 
 
-    <mat-form-field [style.fontSize.px]=15 appearance="fill" class="password-field">
+    <mat-form-field [style.fontSize.px]=15 appearance="outline" class="password-field">
         <mat-label>Password</mat-label>
-        <input matInput type="text" [formControl]="nameFormControl" [errorStateMatcher]="matcher"
-        placeholder="(xx) xxxxx-xxxx">
+        <input formControlName="password" [formControl]="passwordFormControl" matInput type="password" [errorStateMatcher]="matcher"
+        placeholder="Insert your password here">
 
         <mat-hint>Insert a password number here!</mat-hint>
 
-        @if (emailFormControl.hasError('required')) {
+        @if (passwordFormControl.hasError('required')) {
             <mat-error>Password is <strong>required</strong></mat-error>
         }
     </mat-form-field> 
     
-    <mat-form-field [style.fontSize.px]=15 appearance="fill" class="password-field">
+    <mat-form-field [style.fontSize.px]=15 appearance="outline" class="confirm-password-field">
         <mat-label>Confirm Password</mat-label>
-        <input matInput type="text" [formControl]="nameFormControl" [errorStateMatcher]="matcher"
-        placeholder="(xx) xxxxx-xxxx">
+        <input formControlName="confirm_password" [formControl]="confirmPasswordFormControl" matInput type="password" [errorStateMatcher]="matcher"
+        placeholder="Confirm your password here">
 
         <mat-hint>Confirm your password here!</mat-hint>
 
-        @if (emailFormControl.hasError('required')) {
+        @if (confirmPasswordFormControl.hasError('mismatch') && !confirmPasswordFormControl.hasError('required')) {
+            <mat-error>Password and Confirm Password <strong>must be the same</strong></mat-error>
+        }
+        @if (confirmPasswordFormControl.hasError('required')) {
             <mat-error>Confirm Password is <strong>required</strong></mat-error>
         }
+
     </mat-form-field> 
 
-    <button type="submit" mat-raised-button color="primary">Sign Up</button> 
+    <button [disabled]="!userForm.valid" type="submit" mat-raised-button color="primary">Sign Up</button> 
 
 </form>
 

@@ -1,0 +1,48 @@
+@use '@angular/material' as mat;
+@import '../../../assets/palettes/teal-palette.scss';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    padding: 2em 3em 2em 3em;
+    
+}
+
+.signin-form {
+    /* min-width: 150px; */
+    /* max-width: 500px; */
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(18, 1fr);
+    gap: 0.875em;
+}
+
+mat-form-field {
+    @include mat.form-field-density(-5);
+
+    mat-label {
+        @include mat.form-field-density(-5);
+    }
+
+}
+
+.signin-form p{
+    font-size: x-large;
+    color: #009688;
+    font-weight: bold;
+    grid-column: 1 / span 21;
+    text-align: center;
+}
+
+.signin-form .email-field {
+    grid-column: 3 / span 15;
+}
+
+.signin-form .password-field {
+    grid-column: 3 / span 15;
+}
+
+.signin-form button {
+    grid-column: 8 / span 5;
+}

@@ -4,7 +4,6 @@ export interface UserInterface {
     last_name: string;
     email: string;
     recovery_email: string;
-    phone: string;
     password: string;
     confirmEmailToken: string;
 

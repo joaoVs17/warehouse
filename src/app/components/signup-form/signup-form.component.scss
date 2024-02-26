@@ -1,8 +1,11 @@
+@use '@angular/material' as mat;
+@import '../../../assets/palettes/teal-palette.scss';
+
 :host {
     display: flex;
     flex-direction: column;
     gap: 2em;
-    padding: 2em 3em 0px 3em;
+    padding: 2em 3em 2em 3em;
     
 }
 
@@ -15,6 +18,27 @@
     gap: 0.875em;
 }
 
+/* ============================================ */
+/* Customizing inputs */
+/* ============================================ */
+
+mat-form-field {
+    @include mat.form-field-density(-5);
+
+    mat-label {
+        @include mat.form-field-density(-5);
+    }
+
+}
+
+/* ::ng-deep .mdc-notched-outline {
+    background-color: #cfd8dc;
+} */
+
+/* ============================================ */
+/* Setting Columns layout */
+/* ============================================ */
+
 .signup-form p{
     font-size: x-large;
     color: #009688;
@@ -22,6 +46,7 @@
     grid-column: 1 / span 21;
     text-align: center;
 }
+
 
 .signup-form .first-name-field {
     grid-column: 3 / span 7;
@@ -44,32 +69,13 @@
     grid-column: 3 / span 15;
 }
 
+.signup-form .confirm-password-field {
+    grid-column: 3 / span 15;
+}
+
 .signup-form button {
-    grid-column: 7 / span 7;
+    grid-column: 8 / span 5;
 }
 
 
-
-/* Change mat-form-field input height */
-/* ::ng-deep .mat-mdc-form-field {
-    height: 3.75em;
-} */
-/* ::ng-deep .mat-form-field {
-    font-size: 8px !important;
-}
-
-::ng-deep .mdc-floating-label {
-    font-size: 12px !important;
-}
-
-::ng-deep .mat-mdc-text-field-wrapper {
-   height: 2.75em !important; 
-}
-
-::ng-deep .mat-mdc-input-element {
-    top: -7px;
-    position: relative !important;
-}
-
- */
-
+  

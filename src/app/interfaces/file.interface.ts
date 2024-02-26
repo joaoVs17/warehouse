@@ -1,5 +1,5 @@
 export interface FileInterface {
-
+    _id?: string; 
     name: string;
     key: string;
     url: string;

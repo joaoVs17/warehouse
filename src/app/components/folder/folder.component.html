@@ -1,0 +1,7 @@
+<div class="file-container" routerLink="/home/my_files/folders/{{folder?._id}}">
+    <img src="../../../assets/imgs/folder.png">
+    <div class="file-info">
+        <p class="file-name">{{folder?.name}}</p>
+        <p class="file-createdAt">{{folder?.metadata?.createdAt | date : "dd-MM-YYYY"}}</p>
+    </div>
+</div>

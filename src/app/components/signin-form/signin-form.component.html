@@ -1,3 +1,42 @@
-<input type="text" placeholder="Email">
-<input type="password" placeholder="Password">
-<input type="button" routerLink="/home" value="Entra">
+<form class="signin-form" [formGroup]="loginForm" (ngSubmit)="onHandleLogin(loginForm.value)">
+
+    <p class="form-title">Sign In</p>
+
+    <mat-form-field [style.fontSize.px]=15 appearance="outline" class="email-field" >
+
+        <mat-label>Email</mat-label>
+        
+        <input matInput formControlName="email" [formControl]="emailFormControl" type="text" placeholder="Insert your email here">
+
+        <mat-hint>Insert your email here!</mat-hint>
+
+        @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+            <mat-error>Please enter a valid email address</mat-error>
+        }
+        @if (emailFormControl.hasError('required')) {
+            <mat-error>Email is <strong>required</strong></mat-error>
+        }
+
+    </mat-form-field>
+
+
+    <mat-form-field [style.fontSize.px]=15 appearance="outline" class="password-field">
+
+        <mat-label>Password</mat-label>
+
+        <input formControlName="password" type="password" matInput [formControl]="passwordFormControl" placeholder="Insert your password here">
+
+        <mat-hint>Insert your password here</mat-hint>
+
+        @if (passwordFormControl.hasError('required')) {
+            <mat-error>Password is <strong>required</strong></mat-error>
+        }
+
+    </mat-form-field>
+
+    
+    
+    <button matButton [disabled]="!loginForm.valid" type="submit" mat-raised-button color="primary">Sign In</button>
+
+</form>
+
