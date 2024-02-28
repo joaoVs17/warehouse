@@ -3,7 +3,8 @@
     grid-template-rows: auto 1fr auto;
     gap: 0px;
     padding: 0px;
-    min-height: 100vh;
+    height: 100vh;
+    max-height: 100vh;
 }
 
 header {background-color: yellow; height: 3.75em;}
@@ -59,7 +60,7 @@ footer {background-color: cadetblue; margin-top: auto;}
         grid-template-columns: repeat(18, 1fr);
     }
 
-    header {grid-column: 2 / span 16;}
+    header {grid-column: 2 / span 16}
 
     aside {grid-column: span 3;}
     

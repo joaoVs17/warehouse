@@ -32,8 +32,8 @@ export class FileService {
     ) as Observable<FileInterface[]>;
   };
 
-  createFile(file: FileInterface): Observable<FileInterface> {
-    return this.http.post<{response: FileInterface, msg: string}>(`${this.url}/api/files`, file)
+  createFile(formData: FormData): Observable<FileInterface> {
+    return this.http.post<{response: FileInterface, msg: string}>(`${this.url}/api/files`, formData)
     .pipe(
       mapRx((response: {response: FileInterface, msg: string}) => response.response)
     ) as Observable<FileInterface>

@@ -1,56 +1,252 @@
-.main-content {
-    margin: 4em 3em 1em 3em;
-    display: grid;
-    grid-template-columns: repeat(18, 1fr);
-    column-gap: 0.5em;
-
+.main-content { 
+    height: 100%;
+    overflow: scroll;  
     .page-title {
         font-size: x-large;
         color: #009688;
         font-weight: bold;
-        grid-column: 1 / span 18;
     }
-
     hr {
-        grid-column: 1 / span 18;
         border-color: #cfd8dc;
-        margin-bottom: 1em;
     }
 
-    .folders {
-        grid-column: 1 / span 18;
-        display: grid;
-        grid-template-columns: repeat(24, 1fr);
-        column-gap: 1em;
+    .browse-content {
+        .folders {    
+            p {
+                font-weight: 700;
+                color:#607d8b;
+            }
+            .navigation {
+                ul {
+                    a {
+                        li {
+                            list-style: none;
+                        }
+                    }
+                }   
+            }
+            app-folder {
+                text-decoration: none;
+            }
+        }
+        .files {
+            p {
+                font-weight: 700;
+                color:#607d8b;
+            }
+        }
+    }
+
+}
+
+/*Mobile*/
+@media (max-width: 767px) {
+
+    .main-content {
+
+        margin: 3em 2em 1em 2em;
     
-        p {
-            grid-column: span 24;
-            font-weight: 700;
-            color:#607d8b;
+        .page-title {
+    
         }
+        hr {
+    
+        }
+        
+        .browse-content {
+            
+            .folders {    
+                p {
+    
+                }
+                .navigation {
+                    ul {
+                        a {
+                            li {
+    
+                            }
+                        }
+                    }   
+                }
+                app-folder {
+    
+                }
+            }
+            .files {
+                p {
+    
+                }
+                .file-list {
 
-        app-folder {
-            grid-column: span 6;
+                    app-file {
+
+                    }
+                }
+
+            }
+        }
+    
+    }
+
+}
+
+/*Tablets and similar*/
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .main-content {
+
+        
+        margin: 3em 2em 1em 2em;
+
+    
+        .page-title {
+    
+        }
+        hr {
+    
+        }
+        
+        .browse-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            .folders {    
+                p {
+    
+                }
+                .navigation {
+                    display: flex;
+                    gap: 0.5em;
+                    ul {    
+                        display: flex;
+                        a {
+                            li {
+    
+                            }
+                        }
+                    }   
+                }
+                .folder-list {
+                    display: grid;
+                    grid-template-columns: repeat(24, 1fr);
+                    column-gap: 0.875em;
+                    app-folder {
+                        grid-column: span 8;
+                    }
+                }
+            }
+            .files {
+                p {
+    
+                }
+                .file-list {
+                    display: grid;
+                    grid-template-columns: repeat(24, 1fr);
+                    column-gap: 1rem;
+                    position: relative;
+                    #fileDropRef {
+                        opacity: 0.03;
+                        background-color: red;
+                        position:absolute;
+                        z-index: 2;
+                        width: 100%;
+                        height: 100%;
+                    }
+                    .fileover {
+                        border: 20px solid black;
+                      }
+                    app-file {
+                        grid-column: span 12;    
+                    }
+                }
+
+            }
+        }
+    
+    }
+}
+
+/*Bigger screens*/
+@media (min-width: 1024px) {
+
+.main-content {
+    
+    display: flex;
+    flex-direction: column;
+
+    margin: 3em 2em 1em 2em;
+
+    .page-title {
+
+    }
+    hr {
+
+    }
+    
+    .browse-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        .folders {    
+            p {
+
+            }
+            .navigation {
+                display: flex;
+                gap: 0.5em;
+                ul {
+                    display: flex;
+                    a {
+                        li {
+
+                        }
+                    }
+                }   
+            }
+            .folder-list {
+                display: grid;
+                grid-template-columns: repeat(24, 1fr);
+                column-gap: 0.5em;
+                app-folder {
+                    grid-column: span 6;
+                }
+            }
+        }
+        .files {
+            p {
+
+            }
+            .file-list {
+                display: grid;
+                grid-template-columns: repeat(24, 1fr);
+                column-gap: 1em;
+                position: relative;
+                grid-row-gap: 1em;
+                background-color: #009688;
+
+                #fileDropRef {
+                    opacity: 0.03;
+                    background-color: red;
+                    position:absolute;
+                    z-index: 2;
+                    width: 100%;
+                    height: 100%;
+                }
+                .fileover {
+                    background-color: #009688;
+                    background-color: #607d8b;
+                  }
+                app-file{
+                    
+                    pointer-events: all;
+                    grid-column: span 8;
+                }
+            }
+
         }
     }
 
-    .files {
-        margin-top: 1em;
-        grid-column: 1 / span 18;
-        display: grid;
-        grid-template-columns: repeat(24, 1fr);
-        column-gap: 1em;
-
-        p {
-            grid-column: span 24;
-            font-weight: 700;
-            color:#607d8b;
-        }
-
-        app-file {
-            grid-column: span 8;
-        }
-
-    }
+}
+    
 
 }

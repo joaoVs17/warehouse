@@ -36,6 +36,13 @@ export class FolderService {
       })
     ) as Observable<FolderInterface[]>;
   }
+
+  getFolderParentList(folder_id: string): Observable<{name: string, id: string, parent_id: string}[]> {
+    return this.http.get<{response: {name: string, id: string, parent_id: string}[], msg: string}>(`${this.url}/api/folders/parents/${folder_id}`)
+    .pipe(
+      mapRx((response: {response: {name: string, id: string, parent_id: string}[], msg: string}) => response.response)
+    ) as Observable<{name: string, id: string, parent_id: string}[]>
+  }
   
   createFolder(folder: FolderInterface): Observable<FolderInterface> {
     return this.http.get<{response: FolderInterface, msg: string}>(`${this.url}/api/folders`)
