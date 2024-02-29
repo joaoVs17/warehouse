@@ -23,10 +23,10 @@ export const routes: Routes = [
             {path: '', title: 'My Files', component: MyFilesComponent, canActivate: [AuthGuardService]},
             {path: 'folders/:folder_id', title: 'My Files', component: MyFilesComponent, canActivate: [AuthGuardService]}
         ]},
+        {path: 'shared_with_me', title: 'Shared With Me', component: HomeComponent},
+        {path: 'recent', title: 'Recent', component: HomeComponent},
+        {path: 'starred', title: 'Starred', component: HomeComponent},
+        {path: 'trash', title: 'Trash', component: HomeComponent},
+        {path: 'folders', title: 'Folder', component: HomeComponent},
     ]},
-    {path: 'home/shared_with_me', title: 'Shared With Me', component: HomeLayoutComponent},
-    {path: 'home/recent', title: 'Recent', component: HomeLayoutComponent},
-    {path: 'home/starred', title: 'Starred', component: HomeLayoutComponent},
-    {path: 'home/trash', title: 'Trash', component: HomeLayoutComponent},
-    {path: 'home/folders', title: 'Folder', component: HomeLayoutComponent},
 ];

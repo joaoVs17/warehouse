@@ -1,0 +1,32 @@
+:host {
+    user-select: none;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 1rem;
+    align-items: center;
+    height: 100%;
+    padding: 0 1em;
+    background-color: white;
+    app-search-input {
+        grid-row: span 1;
+    }
+    .utils {
+        grid-row: span 1;
+        display: flex;
+        align-items: center;
+        gap: 1em;
+        margin-left: auto;
+        .logged-user {
+            width: 2.5em;
+            height: 2.5em;  
+            display: flex;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;    
+            color: white;
+            font-weight: 400;
+            background-color: #009688;
+        }
+    }
+
+}

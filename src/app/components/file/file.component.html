@@ -1,7 +1,8 @@
-<a [href]="file?._id" [attr.download]="file?.name">
+<a target="_self" [href]="file?.url" [attr.download]="file?.name">
     <div class="file-container" >
         <div class="file-info">
             <p class="file-name">{{file?.name}}</p>
+            <p>{{file?.url}}</p>
             <p class="file-type">{{file?.metadata?.mimetype}}</p>
         </div>
     </div>

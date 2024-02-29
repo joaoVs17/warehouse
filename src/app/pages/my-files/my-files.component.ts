@@ -55,6 +55,7 @@ export class MyFilesComponent implements OnInit {
     this.file.getFilesFromFolder(localStorage.getItem('user_id') || '', parent_id).subscribe(
       res => {
         this.filesList = res;
+        console.log(res);
       }
     )
   }

@@ -12,6 +12,4 @@ export class FileComponent {
 
   @Input() file: FileInterface | null = null; 
 
-
-
 }

@@ -1,46 +1,39 @@
-<div class="main-content">
-
-    <p class="page-title">
+<div class="page-title">
+    <span class="title">
         My Files
-    </p>
-    <hr>
-
-    
-    <div class="browse-content"> 
-        <div class="folders">
-            <div class="navigation">
-                <p>Folders</p>
-                <ul>
-                    <a *ngFor="let parent of parentList" routerLink="/home/my_files/folders/{{parent.id}}">
-                        <li >>>{{parent.name}}</li>
-                    </a>
-                </ul>
-            </div>
-        @if (foldersList.length > 0) {
-            <div class="folder-list">
-                <app-folder *ngFor="let folder of foldersList" [folder]="folder"></app-folder>
-            </div>
-            
-        }
-        </div>        
-    
-    
-    
-        @if (filesList.length > 0){
-            <div class="files">
-                <p>Files</p>
-                <div class="file-list" (fileDropped)="onFileDropped($event)" appDragAndDrop>
-                    <!-- <input type="file" #fileDropRef id="fileDropRef" (fileDropped)="onFileDropped($event)" appDragAndDrop> -->
-                    <app-file *ngFor="let file of filesList" [file]="file"></app-file>
-                </div>
-            </div>
-        }
-    
-        @if (filesList.length == 0 && foldersList.length == 0) {
-            <div>Nothing here</div>
-        }
-    </div>
-
-    
-
+    </span>
+    <ul>
+        <a *ngFor="let parent of parentList" routerLink="/home/my_files/folders/{{parent.id}}">
+            <li ><i class="pi pi-angle-right"></i><span>{{parent.name}}</span></li>
+        </a>
+    </ul>
 </div>
+<hr>
+
+<div class="browse-content"> 
+    <div class="folders">
+    @if (foldersList.length > 0) {
+        <p>Folders</p>
+        <div class="folder-list">
+            <app-folder *ngFor="let folder of foldersList" [folder]="folder"></app-folder>
+        </div>
+    }
+    </div>        
+
+    @if (filesList.length > 0){
+        <div class="files">
+            <p>Files</p>
+            <div class="file-list" (fileDropped)="onFileDropped($event)" appDragAndDrop>
+                <!-- <input type="file" #fileDropRef id="fileDropRef" (fileDropped)="onFileDropped($event)" appDragAndDrop> -->
+                <app-file *ngFor="let file of filesList" [file]="file"></app-file>
+            </div>
+        </div>
+    }
+
+    @if (filesList.length == 0 && foldersList.length == 0) {
+        <div>Nothing here</div>
+    }
+</div>
+
+    
+

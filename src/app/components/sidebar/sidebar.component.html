@@ -1,14 +1,24 @@
-<button id="new">New</button>
-
-<ul>
-    <li><a routerLink="/home/my_files"><i class="pi pi-folder"></i>My files</a></li>
-    <li><a routerLink="/home/shared_with_me"><i class="pi pi-user"></i>Shared With Me</a></li>
-    <li><a routerLink="/home/recent"><i class="pi pi-clock"></i>Recent</a></li>
-    <li><a routerLink="/home/starred"><i class="pi pi-star"></i>Starred</a></li>
-    <li><a routerLink="/home/trash"><i class="pi pi-trash"></i>Trash</a></li>
-</ul>
-
-<button id="donations" routerLink="/">
-    <p>Giving a single coin is a way to love</p>
-    <i class="pi pi-heart"></i>
-</button>
+<div class="sidebar" [ngClass]="collapsed ? 'sidebar-collapsed' : ''">
+    <div class="brand">
+        <img src="../../../assets/logos/Warehouse_logo.svg">
+        <p>Ware House</p>
+    </div>
+    
+    <button id="new">
+        <i class="pi pi-plus"></i>
+        <span>New</span>
+    </button>
+    
+    <ul>
+        <li><a [routerLinkActive]="'active'" routerLink="/home/my_files"><i class="pi pi-folder"></i><span>My files</span></a></li>
+        <li><a [routerLinkActive]="'active'" routerLink="/home/shared_with_me"><i class="pi pi-user"></i><span>Shared With Me</span></a></li>
+        <li><a [routerLinkActive]="'active'" routerLink="/home/recent"><i class="pi pi-clock"></i><span>Recent</span></a></li>
+        <li><a [routerLinkActive]="'active'" routerLink="/home/starred"><i class="pi pi-star"></i><span>Starred</span></a></li>
+        <li><a [routerLinkActive]="'active'" routerLink="/home/trash"><i class="pi pi-trash"></i><span>Trash</span></a></li>
+    </ul>
+    
+    
+    <button id="collapse" (click)="toggleCollapse()">
+        <i class="pi pi-angle-left"></i><span>Collapse</span>
+    </button>
+</div>
