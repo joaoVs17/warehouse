@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>New {{archiveType}}</h1>
+<div mat-dialog-content>
+    <mat-form-field [style.fontSize.px]=15 appearance="outline" class="rename-field" >
+
+        <mat-label>Rename {{archiveType}}</mat-label>
+        
+        <input matInput [formControl]="nameFormControl" type="text" placeholder="Rename {{archiveType}}">
+
+        <mat-hint>Insert the {{archiveType}} name here!</mat-hint>
+
+        @if (nameFormControl.hasError('required')) {
+            <mat-error>A {{archiveType}} name is <strong>required</strong></mat-error>
+        }
+
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button (click)="closePopUp()" mat-raised-button color="warn">Close</button>
+    @if (archiveType == 'folder') {
+        <button [disabled]="nameFormControl.hasError('required')" (click)="renameFolder()" mat-raised-button color="primary">Rename</button>
+    }
+    @if (archiveType == 'file') {
+        <button [disabled]="nameFormControl.hasError('required')" (click)="renameFile()" mat-raised-button color="primary">Rename</button>
+    }
+</div>

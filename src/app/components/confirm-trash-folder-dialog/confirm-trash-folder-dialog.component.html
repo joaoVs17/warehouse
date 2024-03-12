@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Delete Folder?</h1>
+<div class="content" mat-dialog-content>
+    <p>Are you sure you want to move the selected folder and all its files to the trash?</p>
+</div>
+<div mat-dialog-actions>
+    <button (click)="closePopUp()" mat-raised-button color="warn">Close</button>
+    <button (click)="deleteFolder()" mat-raised-button color="primary">Delete</button>
+</div>

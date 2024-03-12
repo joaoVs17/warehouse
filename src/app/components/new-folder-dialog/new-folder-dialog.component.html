@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>New Folder</h1>
+<div mat-dialog-content>
+    <mat-form-field [style.fontSize.px]=15 appearance="outline" class="folder-field" >
+
+        <mat-label>New Folder</mat-label>
+        
+        <input matInput [formControl]="folderFormControl" type="text" placeholder="Name of new folder">
+
+        <mat-hint>Insert folder name here!</mat-hint>
+
+        @if (folderFormControl.hasError('required')) {
+            <mat-error>A folder name is <strong>required</strong></mat-error>
+        }
+
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button (click)="closePopUp()" mat-raised-button color="warn">Close</button>
+    <button [disabled]="folderFormControl.hasError('required')" (click)="createNewFolder()" mat-raised-button color="primary">Create</button>
+</div>

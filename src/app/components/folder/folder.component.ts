@@ -3,18 +3,20 @@ import { FolderInterface } from '../../interfaces/folder.interface';
 import { Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-folder',
   standalone: true,
-  imports: [DatePipe, RouterLink, RouterLinkActive],
+  imports: [DatePipe, RouterLink, RouterLinkActive, NgClass],
   templateUrl: './folder.component.html',
   styleUrl: './folder.component.scss'
 })
 export class FolderComponent {
 
-  
   @Input() folder: FolderInterface | null = null; 
+
+  isMenuOpen: Boolean = false;
 
 
 }

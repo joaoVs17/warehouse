@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 import { LoginGuardService } from './services/login-guard/login-guard.service';
 import { MyFilesComponent } from './pages/my-files/my-files.component';
+import { StarredComponent } from './pages/starred/starred.component';
 
 export const routes: Routes = [
     {path: '', title: 'Welcome', component: LandingLayoutComponent, canActivate: [LoginGuardService], children: [
@@ -25,7 +26,7 @@ export const routes: Routes = [
         ]},
         {path: 'shared_with_me', title: 'Shared With Me', component: HomeComponent},
         {path: 'recent', title: 'Recent', component: HomeComponent},
-        {path: 'starred', title: 'Starred', component: HomeComponent},
+        {path: 'starred', title: 'Starred', component: StarredComponent},
         {path: 'trash', title: 'Trash', component: HomeComponent},
         {path: 'folders', title: 'Folder', component: HomeComponent},
     ]},

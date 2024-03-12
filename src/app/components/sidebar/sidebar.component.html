@@ -1,24 +1,39 @@
-<div class="sidebar" [ngClass]="collapsed ? 'sidebar-collapsed' : ''">
+<div class="sidebar" [ngClass]="collapsed ? 'collapsed' : 'not-collapsed'">
     <div class="brand">
         <img src="../../../assets/logos/Warehouse_logo.svg">
-        <p>Ware House</p>
+        <span>Ware House</span>
     </div>
     
-    <button id="new">
-        <i class="pi pi-plus"></i>
-        <span>New</span>
-    </button>
+    <div class="menu-container" appClickOutside (clickedOutside)="toggleMenuOff()">
+        <button id="new" (click)="toggleMenu()">
+                <div>
+                    <i class="pi pi-plus"></i>
+                </div>
+                <span>New</span>
+        </button>
+    
+        <menu class="menu"  [ngClass]="menuToggled ? 'menuToggled' : ''">
+            <button mat-menu-item (click)="openModal()">Folder</button>
+            <button mat-menu-item>File</button>
+        </menu>
+    </div>
+
     
     <ul>
-        <li><a [routerLinkActive]="'active'" routerLink="/home/my_files"><i class="pi pi-folder"></i><span>My files</span></a></li>
-        <li><a [routerLinkActive]="'active'" routerLink="/home/shared_with_me"><i class="pi pi-user"></i><span>Shared With Me</span></a></li>
-        <li><a [routerLinkActive]="'active'" routerLink="/home/recent"><i class="pi pi-clock"></i><span>Recent</span></a></li>
-        <li><a [routerLinkActive]="'active'" routerLink="/home/starred"><i class="pi pi-star"></i><span>Starred</span></a></li>
-        <li><a [routerLinkActive]="'active'" routerLink="/home/trash"><i class="pi pi-trash"></i><span>Trash</span></a></li>
+        <li><a [routerLinkActive]="'active'" routerLink="/home/my_files"><div><i class="pi pi-folder"></i></div><span>My files</span></a></li>
+        <li><a [routerLinkActive]="'active'" routerLink="/home/shared_with_me"><div><i class="pi pi-user"></i></div><span>Shared With Me</span></a></li>
+        <li><a [routerLinkActive]="'active'" routerLink="/home/recent"><div><i class="pi pi-clock"></i></div><span>Recent</span></a></li>
+        <li><a [routerLinkActive]="'active'" routerLink="/home/starred"><div><i class="pi pi-star"></i></div><span>Starred</span></a></li>
+        <li><a [routerLinkActive]="'active'" routerLink="/home/trash"><div><i class="pi pi-trash"></i></div><span>Trash</span></a></li>
     </ul>
     
     
     <button id="collapse" (click)="toggleCollapse()">
-        <i class="pi pi-angle-left"></i><span>Collapse</span>
+        <div>
+            <div>
+                <i class="pi pi-angle-left" id="collapse-icon"></i>
+            </div>
+            <span>Collapse</span>
+        </div>
     </button>
 </div>

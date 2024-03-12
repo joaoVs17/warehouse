@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FilesListComponent } from './files-list.component';
+import { MyFilesComponent } from './my-files.component';
 
-describe('FilesListComponent', () => {
-  let component: FilesListComponent;
-  let fixture: ComponentFixture<FilesListComponent>;
+describe('MyFilesComponent', () => {
+  let component: MyFilesComponent;
+  let fixture: ComponentFixture<MyFilesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FilesListComponent]
+      imports: [MyFilesComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(FilesListComponent);
+    fixture = TestBed.createComponent(MyFilesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

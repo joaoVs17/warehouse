@@ -1,0 +1,101 @@
+<div class="folders">
+    <div><p>Folders</p></div>
+@if (foldersList.length > 0) {
+    
+    @if ( page == 'my_files') {
+        <div class="folder-list">
+            <div class="folder" *ngFor="let folder of foldersList" appDragAndDrop (fileDropped)="onFileDroppedOnFolder($event, folder._id || '')" pDraggable (onDragStart)="onFolderDragStart(folder)" (onDragEnd)="onFolderDragEnd()" pDroppable (onDrop)="onArchiveDroppedOnFolderPrimeng(folder._id || '')">
+                <app-folder [folder]="folder"></app-folder>
+                <i class="pi pi-ellipsis-v menu-ico" [matMenuTriggerFor]="folderMenu" (click)="selectedFolderIdMenu = folder._id || ''"></i>
+                <i [ngClass]="folder.metadata.starred ? 'starred' : 'not-starred'" class="pi pi-star-fill starred-ico"></i>
+            </div>
+        </div>
+        <mat-menu class="folder-menu" #folderMenu="matMenu">
+            <i class="pi pi-star" (click)="starFolder(selectedFolderIdMenu)"></i>
+            <i class="pi pi-pencil" (click)="renameFolder(selectedFolderIdMenu)"></i>
+            <i class="pi pi-trash" (click)="trashFolder(selectedFolderIdMenu)"></i>  
+        </mat-menu>
+    }
+    @if (page == 'starred') {
+        <div class="folder-list">
+            <div class="folder" *ngFor="let folder of foldersList">
+                <app-folder [folder]="folder"></app-folder>
+                <i class="pi pi-ellipsis-v menu-ico" [matMenuTriggerFor]="folderMenu" (click)="selectedFolderIdMenu = folder._id || ''"></i>
+                <i [ngClass]="folder.metadata.starred ? 'starred' : 'not-starred'" class="pi pi-star-fill starred-ico"></i>
+            </div>
+        </div>
+        <mat-menu class="folder-menu" #folderMenu="matMenu">
+            <i class="pi pi-star" (click)="starFolder(selectedFolderIdMenu)"></i>
+            <i class="pi pi-pencil" (click)="renameFolder(selectedFolderIdMenu)"></i>
+            <i class="pi pi-trash" (click)="trashFolder(selectedFolderIdMenu)"></i>  
+        </mat-menu>
+    }
+
+}
+@if (foldersList.length == 0) {
+    @if (page == 'my_files') {
+        <div class="create-new-folders">
+            <span>There's no folders here. Create a new one!</span>
+        </div>
+    }
+    @if (page == 'starred') {
+        <div class="create-new-folders">
+            <span>There's no folders here</span>
+        </div>
+    }
+}
+</div>        
+
+<div class="files">
+    <div><p>Files</p></div>
+    @if (filesList.length > 0){
+
+        @if (page == 'my_files') {
+            <div class="file-list" (fileDropped)="onFileDropped($event)" appDragAndDrop [systemArchiveDragged]="draggedFile || draggedFolder || undefined">
+                <div class="file" *ngFor="let file of filesList" pDraggable (onDragStart)="onFileDragStart(file)">
+                    <app-file [file]="file"></app-file>
+                    <i class="pi pi-ellipsis-v menu-ico" [matMenuTriggerFor]="fileMenu" (click)="selectedFile = file"></i>
+                    <i [ngClass]="file.metadata.starred ? 'starred' : 'not-starred'" class="pi pi-star-fill starred-ico"></i>
+                </div>
+            </div>
+    
+            <mat-menu class="file-menu" #fileMenu="matMenu">
+                <i class="pi pi-star" (click)="starFile(selectedFile?._id || '')"></i>
+                <i class="pi pi-pencil" (click)="renameFile(selectedFile?._id || '')"></i>
+                <i class="pi pi-trash" (click)="trashFile(selectedFile?._id || '')"></i>
+                <i class="pi pi-download" (click)="downloadFile(selectedFile?._id || '')"></i>
+            </mat-menu>
+        }
+        @if (page == 'starred') {
+            <div class="file-list">
+                <div class="file" *ngFor="let file of filesList">
+                    <app-file [file]="file"></app-file>
+                    <i class="pi pi-ellipsis-v menu-ico" [matMenuTriggerFor]="fileMenu" (click)="selectedFile = file"></i>
+                    <i [ngClass]="file.metadata.starred ? 'starred' : 'not-starred'" class="pi pi-star-fill starred-ico"></i>
+                </div>
+            </div>
+    
+            <mat-menu class="file-menu" #fileMenu="matMenu">
+                <i class="pi pi-star" (click)="starFile(selectedFile?._id || '')"></i>
+                <i class="pi pi-pencil" (click)="renameFile(selectedFile?._id || '')"></i>
+                <i class="pi pi-trash" (click)="trashFile(selectedFile?._id || '')"></i>
+                <i class="pi pi-download" (click)="downloadFile(selectedFile?._id || '')"></i>
+            </mat-menu>
+        }
+
+
+    }
+    @if (filesList.length == 0) {
+        @if (page == 'starred') {
+            <div class="drop-files-here">
+                <span>You have no starred files</span>
+            </div>            
+        }
+        @if (page == 'my_files') {
+            <div class="drop-files-here" (fileDropped)="onFileDropped($event)" appDragAndDrop [systemArchiveDragged]="draggedFile || draggedFolder || undefined">
+                <span>Nothing Here. Drop some files</span>
+            </div>
+        }
+        
+    }
+</div>
