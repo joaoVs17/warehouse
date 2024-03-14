@@ -22,22 +22,10 @@ import { FolderComponent } from '../folder/folder.component';
 import { ConfirmTrashFolderDialogComponent } from '../confirm-trash-folder-dialog/confirm-trash-folder-dialog.component';
 //For Data Binding
 import { Output, EventEmitter } from '@angular/core';
-//For image optimization
-import { NgxImageCompressService } from 'ngx-image-compress'  ;
-import { Exifr } from 'exifr';
-
-//for drag and drop
-import {
-  CdkDragDrop,
-  CdkDrag,
-  CdkDropList,
-  CdkDropListGroup,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
 //drag and drop from primeng
 import { DragDropModule } from 'primeng/dragdrop';
-
+//form image compression
+import { ImgCompressionService } from '../../services/img-compression/img-compression.service';
 
 @Component({
   selector: 'app-archives-manager',
@@ -65,7 +53,14 @@ export class ArchivesManagerComponent {
   draggedFile: FileInterface | null = null;
   draggedFolder: FolderInterface | null = null;
 
-  constructor(private folder: FolderService, private file: FileService, private route: ActivatedRoute, private dialog: MatDialog, private router: Router, private imageCompress: NgxImageCompressService) {
+  constructor(
+    private folder: FolderService, 
+    private file: FileService, 
+    private route: ActivatedRoute, 
+    private dialog: MatDialog, 
+    private imgCompression: ImgCompressionService,
+    ) 
+    {
 
   }
 
@@ -173,20 +168,39 @@ onFileDropped($event : any) {
   console.log($event);
   for (const item of $event) {
     const formData = new FormData();
-/*     this.imageCompress.compressFile(item, exi, 50, 50).then(compressedImage => {
-      console.log(compressedImage);
-    }) */
-    formData.append('file', item);
-    formData.append('folder_id', localStorage.getItem('current_folder') || '');
-    formData.append('owner_id', localStorage.getItem('user_id') || 'kk');
-    this.file.createFile(formData).subscribe(
-      res => {
-        this.updateUI();
-      },
-      err => {
-        console.log(err);
-      }
-    );
+
+    const appendData = () => {
+      formData.append('folder_id', localStorage.getItem('current_folder') || '');
+      formData.append('owner_id', localStorage.getItem('user_id') || 'kk');
+      console.log(formData)
+      this.file.createFile(formData).subscribe(
+        res => {
+          this.updateUI();
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    }
+
+    if (item.type && item.type.startsWith('image')) {
+
+      this.imgCompression.compressImage(item, 50, 50, item.width, item.height, 
+        compressedFile => {
+          formData.append('file',compressedFile);
+          appendData();
+        },
+        msg => {
+          console.log(msg);  
+        }
+        );
+      
+    } else {
+      formData.append('file', item);
+      appendData();
+    }
+
+
   }
 }
 onFileDroppedOnFolder($event: any, folder_id: string) {
@@ -218,7 +232,6 @@ updateUI() {
   }
 
 }
-
 
 ngOnDestroy(): void {
     localStorage.removeItem('current_folder');
